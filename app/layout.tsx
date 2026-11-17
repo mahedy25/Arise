@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans, Inter, Literata } from 'next/font/google';
+// @ts-expect-error Next.js resolves global CSS imports at build time.
 import './globals.css';
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/constants';
 
@@ -28,6 +29,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${reading.variable}`}>
+            <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3602027962595617"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         {children}
