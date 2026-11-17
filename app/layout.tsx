@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans, Inter, Literata } from 'next/font/google';
-// @ts-expect-error Next.js resolves global CSS imports at build time.
 import './globals.css';
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/constants';
 
