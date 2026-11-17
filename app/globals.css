@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Warm "paper" light theme and a warm charcoal dark theme (follows the device setting). */
+:root {
+  --paper: 250 247 240; --surface: 255 254 250; --ink: 38 34 30; --muted: 107 100 92;
+  --line: 38 34 30; --accent: 194 65 12; --link: 15 118 110; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: 24 22 20; --surface: 35 32 29; --ink: 232 226 214; --muted: 163 155 143;
+    --line: 232 226 214; --accent: 251 146 60; --link: 94 207 190; color-scheme: dark;
+  }
+}
+
+body { @apply bg-paper text-ink font-body antialiased; }
+:focus-visible { outline: 3px solid rgb(var(--link)); outline-offset: 3px; }
+::selection { background: rgb(var(--accent) / 0.25); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+@layer components {
+  .prose-read {
+    @apply prose prose-lg max-w-[68ch] font-reading prose-headings:font-display prose-headings:font-extrabold prose-headings:tracking-tight prose-p:leading-[1.8] prose-img:rounded-xl prose-a:underline-offset-2;
+    --tw-prose-body: rgb(var(--ink) / 0.92); --tw-prose-headings: rgb(var(--ink)); --tw-prose-lead: rgb(var(--muted));
+    --tw-prose-links: rgb(var(--link)); --tw-prose-bold: rgb(var(--ink)); --tw-prose-counters: rgb(var(--muted));
+    --tw-prose-bullets: rgb(var(--muted)); --tw-prose-hr: rgb(var(--line) / 0.15); --tw-prose-quotes: rgb(var(--ink));
+    --tw-prose-quote-borders: rgb(var(--accent)); --tw-prose-captions: rgb(var(--muted)); --tw-prose-code: rgb(var(--ink));
+    --tw-prose-th-borders: rgb(var(--line) / 0.2); --tw-prose-td-borders: rgb(var(--line) / 0.1);
+  }
+  .prose-vi { @apply prose-read; }
+}
